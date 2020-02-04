@@ -1,0 +1,5 @@
+[target.wasm32-wasi]
+rustflags = ["-C", "debuginfo=2", "-C", "link-args=--export-dynamic"]
+
+[build]
+target = "wasm32-wasi"
