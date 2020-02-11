@@ -23,7 +23,7 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
         (method, _) if !(vec![Method::HEAD, Method::GET].contains(method)) => Ok(
             Response::builder()
             .status(StatusCode::METHOD_NOT_ALLOWED)
-            .body(Body::try_from("The page you requested could not be found")?)?
+            .body(Body::try_from("Only GET and HEAD requests are allowed")?)?
         ),
 
         // If request is a `GET` to the `/` path, send to a named backend
