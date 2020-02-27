@@ -27,7 +27,7 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
     if !(VALID_METHODS.contains(req.method())) {
         return Ok(Response::builder()
             .status(StatusCode::METHOD_NOT_ALLOWED)
-            .body(Body::try_from("Only GET and HEAD requests are allowed")?)?);
+            .body(Body::try_from("This method is not allowed")?)?);
     }
 
     // Pattern match on the request method and path.
