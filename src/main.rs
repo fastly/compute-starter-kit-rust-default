@@ -4,13 +4,10 @@ use std::convert::TryFrom;
 
 const ONE_MINUTE_TTL: i32 = 60;
 const NO_CACHE_TTL: i32 = -1;
-const VALID_METHODS: [Method; 6] = [
+const VALID_METHODS: [Method; 3] = [
     Method::HEAD,
     Method::GET,
-    Method::POST,
-    Method::PUT,
-    Method::PATCH,
-    Method::DELETE,
+    Method::POST
 ];
 
 /// Handle the downstream request from the client.
