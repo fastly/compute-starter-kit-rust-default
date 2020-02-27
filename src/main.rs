@@ -1,4 +1,4 @@
-use fastly::http::{Method, StatusCode, HeaderValue};
+use fastly::http::{HeaderValue, Method, StatusCode};
 use fastly::{downstream_request, Body, Error, Request, RequestExt, Response, ResponseExt};
 use std::convert::TryFrom;
 
@@ -12,19 +12,18 @@ const NO_CACHE_TTL: i32 = -1;
 /// send the request to a backend, make completely new requests and/or generate
 /// synthetic responses.
 fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
-
     // Make any desired changes to the client request
-    req.headers_mut().insert("Host", HeaderValue::from_static("example.com"));
+    req.headers_mut()
+        .insert("Host", HeaderValue::from_static("example.com"));
 
     // Pattern match on the request method and path.
     match (req.method(), req.uri().path()) {
-
         // If request method is not GET or HEAD, error
-        (method, _) if !(vec![Method::HEAD, Method::GET].contains(method)) => Ok(
-            Response::builder()
-            .status(StatusCode::METHOD_NOT_ALLOWED)
-            .body(Body::try_from("Only GET and HEAD requests are allowed")?)?
-        ),
+        (method, _) if !(vec![Method::HEAD, Method::GET].contains(method)) => {
+            Ok(Response::builder()
+                .status(StatusCode::METHOD_NOT_ALLOWED)
+                .body(Body::try_from("Only GET and HEAD requests are allowed")?)?)
+        }
 
         // If request is a `GET` to the `/` path, send to a named backend
         (&Method::GET, "/") => {
@@ -41,11 +40,9 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
         }
 
         // Catch all other requests and return a 404.
-        _ => Ok(
-            Response::builder()
+        _ => Ok(Response::builder()
             .status(StatusCode::NOT_FOUND)
-            .body(Body::try_from("The page you requested could not be found")?)?
-        ),
+            .body(Body::try_from("The page you requested could not be found")?)?),
     }
 }
 
