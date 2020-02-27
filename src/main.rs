@@ -4,6 +4,14 @@ use std::convert::TryFrom;
 
 const ONE_MINUTE_TTL: i32 = 60;
 const NO_CACHE_TTL: i32 = -1;
+const VALID_METHODS: [Method; 6] = [
+    Method::HEAD,
+    Method::GET,
+    Method::POST,
+    Method::PUT,
+    Method::PATCH,
+    Method::DELETE,
+];
 
 /// Handle the downstream request from the client.
 ///
@@ -16,15 +24,14 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
     req.headers_mut()
         .insert("Host", HeaderValue::from_static("example.com"));
 
+    if !(VALID_METHODS.contains(req.method())) {
+        return Ok(Response::builder()
+            .status(StatusCode::METHOD_NOT_ALLOWED)
+            .body(Body::try_from("Only GET and HEAD requests are allowed")?)?);
+    }
+
     // Pattern match on the request method and path.
     match (req.method(), req.uri().path()) {
-        // If request method is not GET or HEAD, error
-        (method, _) if !(vec![Method::HEAD, Method::GET].contains(method)) => {
-            Ok(Response::builder()
-                .status(StatusCode::METHOD_NOT_ALLOWED)
-                .body(Body::try_from("Only GET and HEAD requests are allowed")?)?)
-        }
-
         // If request is a `GET` to the `/` path, send to a named backend
         (&Method::GET, "/") => {
             // Request handling logic could go here...
@@ -56,7 +63,7 @@ fn main() -> Result<(), Error> {
     match handle_request(req) {
         Ok(resp) => resp.send_downstream()?,
         Err(e) => {
-            let mut resp = Response::new(e.msg.as_bytes());
+            let mut resp = Response::new(Vec::from(e.msg));
             *resp.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
             resp.send_downstream()?;
         }
