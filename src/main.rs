@@ -4,11 +4,7 @@ use std::convert::TryFrom;
 
 const ONE_MINUTE_TTL: i32 = 60;
 const NO_CACHE_TTL: i32 = -1;
-const VALID_METHODS: [Method; 3] = [
-    Method::HEAD,
-    Method::GET,
-    Method::POST
-];
+const VALID_METHODS: [Method; 3] = [Method::HEAD, Method::GET, Method::POST];
 
 /// Handle the downstream request from the client.
 ///
@@ -29,8 +25,13 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
 
     // Pattern match on the request method and path.
     match (req.method(), req.uri().path()) {
-        // If request is a `GET` to the `/` path, send to a named backend
-        (&Method::GET, "/") => {
+        // If request is a `GET` to the `/` path, send a default response.
+        (&Method::GET, "/") => Ok(Response::builder()
+            .status(StatusCode::OK)
+            .body(Body::try_from("Welcome to Fastly Compute@Edge!")?)?),
+
+        // If request is a `GET` to the `/backend` path, send to a named backend.
+        (&Method::GET, "/backend") => {
             // Request handling logic could go here...
             // Eg. send the request to an origin backend and then cache the
             // response for one minute.
@@ -50,7 +51,7 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
     }
 }
 
-/// The entrypoint for your application
+/// The entrypoint for your application.
 ///
 /// This function is triggered when your service receives a client request, and
 /// should ultimately call `send_downstream` on a fastly::Response to deliver an
