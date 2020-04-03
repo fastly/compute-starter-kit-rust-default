@@ -61,7 +61,7 @@ fn main() -> Result<(), Error> {
     match handle_request(req) {
         Ok(resp) => resp.send_downstream()?,
         Err(e) => {
-            let mut resp = Response::new(Vec::from(e.msg));
+            let mut resp = Response::new(e.to_string());
             *resp.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
             resp.send_downstream()?;
         }
