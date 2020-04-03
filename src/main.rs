@@ -35,13 +35,13 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
             // Request handling logic could go here...
             // Eg. send the request to an origin backend and then cache the
             // response for one minute.
-            req.send("backend-name", ONE_MINUTE_TTL)
+            req.send("backend_name", ONE_MINUTE_TTL)
         }
 
         // If request is a `GET` to a path starting with `/other/`.
         (&Method::GET, path) if path.starts_with("/other/") => {
             // Send request to a different backend and don't cache response.
-            req.send("other-backend-name", NO_CACHE_TTL)
+            req.send("other_backend_name", NO_CACHE_TTL)
         }
 
         // Catch all other requests and return a 404.
