@@ -1,9 +1,8 @@
 use fastly::http::{HeaderValue, Method, StatusCode};
+use fastly::request::CacheOverride;
 use fastly::{downstream_request, Body, Error, Request, RequestExt, Response, ResponseExt};
 use std::convert::TryFrom;
 
-const ONE_MINUTE_TTL: i32 = 60;
-const NO_CACHE_TTL: i32 = -1;
 const VALID_METHODS: [Method; 3] = [Method::HEAD, Method::GET, Method::POST];
 
 /// Handle the downstream request from the client.
@@ -35,13 +34,15 @@ fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
             // Request handling logic could go here...
             // Eg. send the request to an origin backend and then cache the
             // response for one minute.
-            req.send("backend_name", ONE_MINUTE_TTL)
+            req.set_cache_override(CacheOverride::ttl(60));
+            req.send("backend_name")
         }
 
         // If request is a `GET` to a path starting with `/other/`.
         (&Method::GET, path) if path.starts_with("/other/") => {
             // Send request to a different backend and don't cache response.
-            req.send("other_backend_name", NO_CACHE_TTL)
+            req.set_cache_override(CacheOverride::Pass);
+            req.send("other_backend_name")
         }
 
         // Catch all other requests and return a 404.
