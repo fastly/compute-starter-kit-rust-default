@@ -1,9 +1,8 @@
 //! Default Compute@Edge template program.
 
-use fastly::http::response::Builder as ResponseBuilder;
 use fastly::http::{HeaderValue, Method, StatusCode};
 use fastly::request::CacheOverride;
-use fastly::{downstream_request, Body, Error, Request, RequestExt, Response, ResponseExt};
+use fastly::{Body, Error, Request, RequestExt, Response, ResponseExt};
 use std::convert::TryFrom;
 
 /// The name of a backend server associated with this service.
@@ -17,32 +16,13 @@ const OTHER_BACKEND_NAME: &str = "other_backend_name";
 
 /// The entrypoint for your application.
 ///
-/// This function is triggered when your service receives a client request. This function can call
-/// `fastly::downstream_request` to get the client request, and should ultimately call
-/// `fastly::send_downstream` on a `fastly::Response` to deliver an HTTP response to the client.
-///
-/// If `main` returns an error a 500 error response will be delivered to the client.
-fn main() -> Result<(), Error> {
-    let req = downstream_request()?;
-    let resp = match handle_request(req) {
-        Ok(resp) => resp,
-        Err(e) => {
-            let body = Body::try_from(e.to_string())?;
-            ResponseBuilder::new()
-                .status(StatusCode::INTERNAL_SERVER_ERROR)
-                .body(body)?
-        }
-    };
-    resp.send_downstream()?;
-    Ok(())
-}
-
-/// Handle the downstream request from the client.
-///
-/// This function accepts a `Request<Body>` and returns a `Response<Body>`. It could be used to
+/// This function is triggered when your service receives a client request. It could be used to
 /// route based on the request properties (such as method or path), send the request to a backend,
 /// make completely new requests, and/or generate synthetic responses.
-fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
+///
+/// If `main` returns an error a 500 error response will be delivered to the client.
+#[fastly::main]
+fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
     // Make any desired changes to the client request
     req.headers_mut()
         .insert("Host", HeaderValue::from_static("example.com"));
