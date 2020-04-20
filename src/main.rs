@@ -18,16 +18,10 @@ const OTHER_BACKEND_NAME: &str = "other_backend_name";
 /// The entrypoint for your application.
 ///
 /// This function is triggered when your service receives a client request. This function can call
-/// [`fastly::downstream_request`][dsreq] to get the client request, and should ultimately call
-/// [`fastly::send_downstream`][send] on a [`fastly::Response`][resp] to deliver an HTTP response
-/// to the client.
+/// `fastly::downstream_request` to get the client request, and should ultimately call
+/// `fastly::send_downstream` on a `fastly::Response` to deliver an HTTP response to the client.
 ///
-/// If `main` returns an error, a [500 Internal Server Error][err] will be delivered to the client.
-///
-/// [dsreq]: ../fastly/request/fn.downstream_request.html
-/// [err]: https://tools.ietf.org/html/rfc7231#section-6.6.1
-/// [resp]: ../fastly/struct.Response.html
-/// [send]: ../fastly/response/trait.ResponseExt.html#method.send_downstream
+/// If `main` returns an error a 500 error response will be delivered to the client.
 fn main() -> Result<(), Error> {
     let req = downstream_request()?;
     let resp = match handle_request(req) {
@@ -45,12 +39,9 @@ fn main() -> Result<(), Error> {
 
 /// Handle the downstream request from the client.
 ///
-/// This function accepts a [`Request<Body>`][req] and returns a [`Response<Body>`][resp]. It could
-/// be used to route based on the request properties (such as method or path), send the request to
-/// a backend, make completely new requests, and/or generate synthetic responses.
-///
-/// [req]: ../fastly/struct.Request.html
-/// [resp]: ../fastly/struct.Response.html
+/// This function accepts a `Request<Body>` and returns a `Response<Body>`. It could be used to
+/// route based on the request properties (such as method or path), send the request to a backend,
+/// make completely new requests, and/or generate synthetic responses.
 fn handle_request(mut req: Request<Body>) -> Result<Response<Body>, Error> {
     // Make any desired changes to the client request
     req.headers_mut()
