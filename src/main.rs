@@ -3,7 +3,6 @@
 use fastly::http::{HeaderValue, Method, StatusCode};
 use fastly::request::CacheOverride;
 use fastly::{Body, Error, Request, RequestExt, Response, ResponseExt};
-use std::convert::TryFrom;
 
 /// The name of a backend server associated with this service.
 ///
@@ -32,7 +31,7 @@ fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
     if !(VALID_METHODS.contains(req.method())) {
         return Ok(Response::builder()
             .status(StatusCode::METHOD_NOT_ALLOWED)
-            .body(Body::try_from("This method is not allowed")?)?);
+            .body(Body::from("This method is not allowed"))?);
     }
 
     // Pattern match on the request method and path.
@@ -40,7 +39,7 @@ fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
         // If request is a `GET` to the `/` path, send a default response.
         (&Method::GET, "/") => Ok(Response::builder()
             .status(StatusCode::OK)
-            .body(Body::try_from("Welcome to Fastly Compute@Edge!")?)?),
+            .body(Body::from("Welcome to Fastly Compute@Edge!"))?),
 
         // If request is a `GET` to the `/backend` path, send to a named backend.
         (&Method::GET, "/backend") => {
@@ -48,19 +47,19 @@ fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
             // Eg. send the request to an origin backend and then cache the
             // response for one minute.
             req.set_cache_override(CacheOverride::ttl(60));
-            req.send(BACKEND_NAME)
+            Ok(req.send(BACKEND_NAME)?)
         }
 
         // If request is a `GET` to a path starting with `/other/`.
         (&Method::GET, path) if path.starts_with("/other/") => {
             // Send request to a different backend and don't cache response.
             req.set_cache_override(CacheOverride::Pass);
-            req.send(OTHER_BACKEND_NAME)
+            Ok(req.send(OTHER_BACKEND_NAME)?)
         }
 
         // Catch all other requests and return a 404.
         _ => Ok(Response::builder()
             .status(StatusCode::NOT_FOUND)
-            .body(Body::try_from("The page you requested could not be found")?)?),
+            .body(Body::from("The page you requested could not be found"))?),
     }
 }
