@@ -31,3 +31,7 @@ const OTHER_BACKEND_NAME: &str = "other_backend_name";
 ```
 
 The starter uses two backends, so if you want to, go ahead and create two backends using the CLI and then modify both names here. You should now have a Fastly service running on Compute@Edge that can talk to your backends, and generate synthetic responses at the edge.
+
+## Security issues
+
+Please see our [SECURITY.md](SECURITY.md) for guidance on reporting security-related issues.
