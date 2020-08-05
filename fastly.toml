@@ -1,5 +1,5 @@
 manifest_version = "0.1.0"
 name = "Compute@Edge default template for Rust"
-description = "Default package template used by the Fastly CLI for Rust-based Compute@Edge projects."
+description = "Get to know the Fastly Compute@Edge environment with a basic starter that demonstrates routing, simple synthetic responses and overriding caching rules."
 authors = ["<oss@fastly.com>"]
 language = "rust"
