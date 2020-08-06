@@ -13,16 +13,16 @@ const BACKEND_NAME: &str = "backend_name";
 /// The name of a second backend associated with this service.
 const OTHER_BACKEND_NAME: &str = "other_backend_name";
 
-/// The entrypoint for your application.
+/// The entry point for your application.
 ///
 /// This function is triggered when your service receives a client request. It could be used to
 /// route based on the request properties (such as method or path), send the request to a backend,
 /// make completely new requests, and/or generate synthetic responses.
 ///
-/// If `main` returns an error a 500 error response will be delivered to the client.
+/// If `main` returns an error, a 500 error response will be delivered to the client.
 #[fastly::main]
 fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
-    // Make any desired changes to the client request
+    // Make any desired changes to the client request.
     req.headers_mut()
         .insert("Host", HeaderValue::from_static("example.com"));
 
@@ -44,7 +44,7 @@ fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
         // If request is a `GET` to the `/backend` path, send to a named backend.
         (&Method::GET, "/backend") => {
             // Request handling logic could go here...
-            // Eg. send the request to an origin backend and then cache the
+            // E.g., send the request to an origin backend and then cache the
             // response for one minute.
             req.set_cache_override(CacheOverride::ttl(60));
             Ok(req.send(BACKEND_NAME)?)
