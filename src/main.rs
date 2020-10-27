@@ -46,14 +46,14 @@ fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
             // Request handling logic could go here...
             // E.g., send the request to an origin backend and then cache the
             // response for one minute.
-            req.set_cache_override(CacheOverride::ttl(60));
+            *req.cache_override_mut() = CacheOverride::ttl(60);
             Ok(req.send(BACKEND_NAME)?)
         }
 
         // If request is a `GET` to a path starting with `/other/`.
         (&Method::GET, path) if path.starts_with("/other/") => {
             // Send request to a different backend and don't cache response.
-            req.set_cache_override(CacheOverride::Pass);
+            *req.cache_override_mut() = CacheOverride::Pass;
             Ok(req.send(OTHER_BACKEND_NAME)?)
         }
 
