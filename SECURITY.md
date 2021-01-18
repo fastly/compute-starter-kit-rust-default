@@ -1,6 +1,6 @@
 ## Report a security issue
 
-The fastly-template-rust-default project team welcomes security reports and is committed to providing prompt attention to security issues. Security issues should be reported privately via [Fastly’s security issue reporting process](https://www.fastly.com/security/report-security-issue).
+The compute-starter-kit-rust-default project team welcomes security reports and is committed to providing prompt attention to security issues. Security issues should be reported privately via [Fastly’s security issue reporting process](https://www.fastly.com/security/report-security-issue).
 
 ## Security advisories
 
