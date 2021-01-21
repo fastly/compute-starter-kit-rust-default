@@ -1,8 +1,7 @@
 //! Default Compute@Edge template program.
 
-use fastly::http::{HeaderValue, Method, StatusCode};
-use fastly::request::CacheOverride;
-use fastly::{Body, Error, Request, RequestExt, Response, ResponseExt};
+use fastly::http::{header, Method, StatusCode};
+use fastly::{Error, Request, Response};
 
 /// The name of a backend server associated with this service.
 ///
@@ -21,45 +20,47 @@ const OTHER_BACKEND_NAME: &str = "other_backend_name";
 ///
 /// If `main` returns an error, a 500 error response will be delivered to the client.
 #[fastly::main]
-fn main(mut req: Request<Body>) -> Result<impl ResponseExt, Error> {
+fn main(mut req: Request) -> Result<Response, Error> {
     // Make any desired changes to the client request.
-    req.headers_mut()
-        .insert("Host", HeaderValue::from_static("example.com"));
+    req.set_header(header::HOST, "example.com");
 
-    // We can filter requests that have unexpected methods.
-    const VALID_METHODS: [Method; 3] = [Method::HEAD, Method::GET, Method::POST];
-    if !(VALID_METHODS.contains(req.method())) {
-        return Ok(Response::builder()
-            .status(StatusCode::METHOD_NOT_ALLOWED)
-            .body(Body::from("This method is not allowed"))?);
-    }
+    // Filter request methods...
+    match req.get_method() {
+        &Method::GET | &Method::HEAD => (),
 
-    // Pattern match on the request method and path.
-    match (req.method(), req.uri().path()) {
-        // If request is a `GET` to the `/` path, send a default response.
-        (&Method::GET, "/") => Ok(Response::builder()
-            .status(StatusCode::OK)
-            .body(Body::from("Welcome to Fastly Compute@Edge!"))?),
+        // Accept PURGE requests; it does not matter to which backend they are sent.
+        m if m == "PURGE" => return Ok(req.send(BACKEND_NAME)?),
 
-        // If request is a `GET` to the `/backend` path, send to a named backend.
-        (&Method::GET, "/backend") => {
-            // Request handling logic could go here...
-            // E.g., send the request to an origin backend and then cache the
-            // response for one minute.
-            *req.cache_override_mut() = CacheOverride::ttl(60);
+        // Deny anything else.
+        _ => {
+            return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
+                .with_body_str("This method is not allowed\n"))
+        }
+    };
+
+    // Pattern match on the path.
+    match req.get_path() {
+        // If request is to the `/` path, send a default response.
+        "/" => Ok(Response::from_status(StatusCode::OK)
+            .with_body_str("Welcome to Fastly Compute@Edge!\n")),
+
+        // If request is to the `/backend` path, send to a named backend.
+        "/backend" => {
+            // Request handling logic could go here...  E.g., send the request to an origin backend
+            // and then cache the response for one minute.
+            req.set_ttl(60);
             Ok(req.send(BACKEND_NAME)?)
         }
 
-        // If request is a `GET` to a path starting with `/other/`.
-        (&Method::GET, path) if path.starts_with("/other/") => {
+        // If request is to a path starting with `/other/`...
+        path if path.starts_with("/other/") => {
             // Send request to a different backend and don't cache response.
-            *req.cache_override_mut() = CacheOverride::Pass;
+            req.set_pass(true);
             Ok(req.send(OTHER_BACKEND_NAME)?)
         }
 
         // Catch all other requests and return a 404.
-        _ => Ok(Response::builder()
-            .status(StatusCode::NOT_FOUND)
-            .body(Body::from("The page you requested could not be found"))?),
+        _ => Ok(Response::from_status(StatusCode::NOT_FOUND)
+            .with_body_str("The page you requested could not be found\n")),
     }
 }

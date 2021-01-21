@@ -8,4 +8,5 @@ edition = "2018"
 debug = true
 
 [dependencies]
-fastly = "^0.5.0"
+# XXX: set to release version
+fastly = "^0.6.0-beta3"
