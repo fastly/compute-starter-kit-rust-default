@@ -34,4 +34,4 @@ The starter uses two backends, so if you want to, go ahead and create two backen
 
 ## Security issues
 
-Please see our [SECURITY.md](SECURITY.md) for guidance on reporting security-related issues.
+Please see [SECURITY.md](SECURITY.md) for guidance on reporting security-related issues.
