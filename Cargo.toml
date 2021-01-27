@@ -1,6 +1,6 @@
 [package]
 name = "compute-starter-kit-rust-default"
-version = "0.1.0"
+version = "0.2.0"
 authors = []
 edition = "2018"
 
@@ -8,4 +8,4 @@ edition = "2018"
 debug = true
 
 [dependencies]
-fastly = "^0.5.0"
+fastly = "0.6.0"
