@@ -1,4 +1,4 @@
 /README.md @fastly/developer-relations
 /fastly.toml @fastly/developer-relations
-*.rs @fastly/ecp-sdk-sme
-/Cargo.toml @fastly/ecp-sdk-sme
+*.rs @fastly/ecp-sdk-sme-rust
+/Cargo.toml @fastly/ecp-sdk-sme-rust
