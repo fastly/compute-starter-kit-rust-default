@@ -1,5 +1,5 @@
-manifest_version = "0.1.0"
-name = "Compute@Edge default starter kit for Rust"
+manifest_version = "0.2.0"
+name = "Default starter for Rust"
 description = "Get to know the Fastly Compute@Edge environment with a basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
 authors = ["<oss@fastly.com>"]
 language = "rust"
