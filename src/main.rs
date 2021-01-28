@@ -26,6 +26,7 @@ fn main(mut req: Request) -> Result<Response, Error> {
 
     // Filter request methods...
     match req.get_method() {
+        // Allow GET and HEAD requests.
         &Method::GET | &Method::HEAD => (),
 
         // Accept PURGE requests; it does not matter to which backend they are sent.
