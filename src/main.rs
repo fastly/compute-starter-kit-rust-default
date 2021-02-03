@@ -35,6 +35,7 @@ fn main(mut req: Request) -> Result<Response, Error> {
         // Deny anything else.
         _ => {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
+                .with_header(header::ALLOW, "GET, HEAD")
                 .with_body_str("This method is not allowed\n"))
         }
     };
