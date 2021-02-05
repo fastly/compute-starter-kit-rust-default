@@ -1,7 +1,7 @@
 //! Default Compute@Edge template program.
 
 use fastly::http::{header, Method, StatusCode};
-use fastly::{Error, Request, Response};
+use fastly::{mime, Error, Request, Response};
 
 /// The name of a backend server associated with this service.
 ///
@@ -44,7 +44,8 @@ fn main(mut req: Request) -> Result<Response, Error> {
     match req.get_path() {
         // If request is to the `/` path, send a default response.
         "/" => Ok(Response::from_status(StatusCode::OK)
-            .with_body_str("Welcome to Fastly Compute@Edge!\n")),
+            .with_content_type(mime::TEXT_HTML_UTF_8)
+            .with_body("<iframe src='https://developer.fastly.com/compute-welcome' style='border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%'></iframe>\n")),
 
         // If request is to the `/backend` path, send to a named backend.
         "/backend" => {
