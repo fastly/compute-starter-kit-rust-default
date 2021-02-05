@@ -1,7 +1,7 @@
 //! Default Compute@Edge template program.
 
 use fastly::http::{header, Method, StatusCode};
-use fastly::{Error, Request, Response};
+use fastly::{mime, Error, Request, Response};
 
 /// The name of a backend server associated with this service.
 ///
