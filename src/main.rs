@@ -36,7 +36,7 @@ fn main(mut req: Request) -> Result<Response, Error> {
         _ => {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
                 .with_header(header::ALLOW, "GET, HEAD")
-                .with_body_str("This method is not allowed\n"))
+                .with_body_text_plain("This method is not allowed\n"))
         }
     };
 
@@ -64,6 +64,6 @@ fn main(mut req: Request) -> Result<Response, Error> {
 
         // Catch all other requests and return a 404.
         _ => Ok(Response::from_status(StatusCode::NOT_FOUND)
-            .with_body_str("The page you requested could not be found\n")),
+            .with_body_text_plain("The page you requested could not be found\n")),
     }
 }
