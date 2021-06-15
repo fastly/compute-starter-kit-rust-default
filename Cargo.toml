@@ -3,9 +3,12 @@ name = "compute-starter-kit-rust-default"
 version = "0.1.0"
 authors = []
 edition = "2018"
+# Remove this line if you want to be able to publish this crate as open source on crates.io.
+# Otherwise, `publish = false` prevents an accidental `cargo publish` from revealing private source.
+publish = false
 
 [profile.release]
 debug = true
 
 [dependencies]
-fastly = "^0.7.1"
+fastly = "^0.7.3"
