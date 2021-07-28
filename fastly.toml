@@ -3,3 +3,15 @@ name = "Default starter for Rust"
 description = "Get to know the Fastly Compute@Edge environment with a basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
 authors = ["<oss@fastly.com>"]
 language = "rust"
+
+[setup]
+  [[setup.backends]]
+    name = "backend_name"
+    prompt = "Origin server able to serve /solutions/ path"
+    address = "developer.fastly.com"
+    port = 443
+  [[setup.backends]]
+    name = "other_backend_name"
+    prompt = "Origin server able to serve /anything/ path"
+    address = "httpbin.org"
+    port = 443

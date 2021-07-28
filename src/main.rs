@@ -21,9 +21,6 @@ const OTHER_BACKEND_NAME: &str = "other_backend_name";
 /// If `main` returns an error, a 500 error response will be delivered to the client.
 #[fastly::main]
 fn main(mut req: Request) -> Result<Response, Error> {
-    // Make any desired changes to the client request.
-    req.set_header(header::HOST, "example.com");
-
     // Filter request methods...
     match req.get_method() {
         // Allow GET and HEAD requests.
@@ -47,16 +44,19 @@ fn main(mut req: Request) -> Result<Response, Error> {
             .with_content_type(mime::TEXT_HTML_UTF_8)
             .with_body("<iframe src='https://developer.fastly.com/compute-welcome' style='border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%'></iframe>\n")),
 
-        // If request is to the `/backend` path, send to a named backend.
-        "/backend" => {
+        // If request is to the `/solutions/` path, send to a named backend.
+        "/solutions/" => {
             // Request handling logic could go here...  E.g., send the request to an origin backend
             // and then cache the response for one minute.
             req.set_ttl(60);
             Ok(req.send(BACKEND_NAME)?)
         }
 
-        // If request is to a path starting with `/other/`...
-        path if path.starts_with("/other/") => {
+        // If request is to a path starting with `/anything`...
+        path if path.starts_with("/anything") => {
+            // Make any desired changes to the client request.
+            req.set_header(header::HOST, "example.com");
+
             // Send request to a different backend and don't cache response.
             req.set_pass(true);
             Ok(req.send(OTHER_BACKEND_NAME)?)
