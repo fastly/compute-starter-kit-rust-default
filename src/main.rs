@@ -55,7 +55,7 @@ fn main(mut req: Request) -> Result<Response, Error> {
         // If request is to a path starting with `/anything`...
         path if path.starts_with("/anything") => {
             // Make any desired changes to the client request.
-            req.set_header(header::HOST, "example.com");
+            req.set_header("X-CustomExample", "foobar");
 
             // Send request to a different backend and don't cache response.
             req.set_pass(true);

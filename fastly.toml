@@ -12,6 +12,6 @@ language = "rust"
     port = 443
   [[setup.backends]]
     name = "other_backend_name"
-    prompt = "Origin server able to serve /anything/ path (and change of Host header to example.com)"
+    prompt = "Origin server able to serve `/anything` path"
     address = "httpbin.org"
     port = 443
