@@ -4,6 +4,9 @@ description = "Get to know the Fastly Compute@Edge environment with a basic star
 authors = ["<oss@fastly.com>"]
 language = "rust"
 
+# The [setup] section is used by the Fastly CLI to provide a more integrated experience for shared 'Starter Kits'.
+# https://developer.fastly.com/reference/fastly-toml/
+#
 [setup]
   [[setup.backends]]
     name = "backend_name"
