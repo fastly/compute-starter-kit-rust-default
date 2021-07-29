@@ -13,8 +13,10 @@ language = "rust"
     prompt = "Origin server able to serve `/solutions/` path"
     address = "developer.fastly.com"
     port = 443
+    override_host = "developer.fastly.com"
   [[setup.backends]]
     name = "other_backend_name"
     prompt = "Origin server able to serve `/anything` path"
     address = "httpbin.org"
     port = 443
+    override_host = "httpbin.org"
