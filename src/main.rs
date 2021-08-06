@@ -5,7 +5,7 @@ use fastly::{mime, Error, Request, Response};
 
 /// The name of a backend server associated with this service.
 ///
-/// This should be changed to match the name of your own backend. See the the `Hosts` section of
+/// This should be changed to match the name of your own backend. See the `Hosts` section of
 /// the Fastly WASM service UI for more information.
 const BACKEND_NAME: &str = "backend_name";
 
