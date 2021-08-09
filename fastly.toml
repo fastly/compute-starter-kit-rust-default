@@ -10,11 +10,11 @@ language = "rust"
 [setup]
   [[setup.backends]]
     name = "backend_name"
-    prompt = "Origin server able to serve `/solutions/` path"
+    prompt = "Backend able to serve `/solutions/` path"
     address = "developer.fastly.com"
     port = 443
   [[setup.backends]]
     name = "other_backend_name"
-    prompt = "Origin server able to serve `/anything` path"
+    prompt = "Backend able to serve `/anything` path"
     address = "httpbin.org"
     port = 443
