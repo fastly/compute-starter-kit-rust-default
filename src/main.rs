@@ -44,8 +44,8 @@ fn main(mut req: Request) -> Result<Response, Error> {
             .with_content_type(mime::TEXT_HTML_UTF_8)
             .with_body("<iframe src='https://developer.fastly.com/compute-welcome' style='border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%'></iframe>\n")),
 
-        // If request is to the `/fastly` path, send to a named backend.
-        "/fastly" => {
+        // If request is to the `/articles` path, send to a named backend.
+        "/articles" => {
             // Request handling logic could go here...  E.g., send the request to an origin backend
             // and then cache the response for one minute.
             req.set_ttl(60);

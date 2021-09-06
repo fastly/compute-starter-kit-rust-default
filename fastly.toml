@@ -10,8 +10,8 @@ language = "rust"
 [setup]
   [[setup.backends]]
     name = "backend_name"
-    prompt = "Backend able to serve `/fastly` path"
-    address = "github.com"
+    prompt = "Backend able to serve `/articles` path"
+    address = "reqbin.com"
     port = 443
   [[setup.backends]]
     name = "other_backend_name"
