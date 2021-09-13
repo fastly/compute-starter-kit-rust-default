@@ -11,4 +11,4 @@ publish = false
 debug = true
 
 [dependencies]
-fastly = "^0.7.3"
+fastly = "^0.8.0"
