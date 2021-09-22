@@ -8,7 +8,7 @@ edition = "2018"
 publish = false
 
 [profile.release]
-debug = true
+debug = 1
 
 [dependencies]
 fastly = "^0.8.0"
