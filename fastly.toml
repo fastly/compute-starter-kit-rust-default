@@ -7,14 +7,11 @@ language = "rust"
 # The [setup] section is used by the Fastly CLI to provide a more integrated experience for shared Starter Kits.
 # https://developer.fastly.com/reference/fastly-toml/
 #
-[setup]
-  [[setup.backends]]
-    name = "backend_name"
-    prompt = "Backend able to serve `/articles` path"
-    address = "reqbin.com"
-    port = 443
-  [[setup.backends]]
-    name = "other_backend_name"
-    prompt = "Backend able to serve `/anything` path"
-    address = "httpbin.org"
-    port = 443
+[setup.backends.backend_name]
+prompt = "Backend able to serve `/articles` path"
+address = "reqbin.com"
+port = 443
+[setup.backends.other_backend_name]
+prompt = "Backend able to serve `/anything` path"
+address = "httpbin.org"
+port = 443
