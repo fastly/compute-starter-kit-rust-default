@@ -1,4 +1,4 @@
-manifest_version = 1
+manifest_version = 2
 name = "Default starter for Rust"
 description = "A basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
 authors = ["<oss@fastly.com>"]
