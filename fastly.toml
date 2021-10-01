@@ -8,10 +8,10 @@ language = "rust"
 # https://developer.fastly.com/reference/fastly-toml/
 #
 [setup.backends.backend_name]
-prompt = "Backend able to serve `/articles` path"
+description = "A backend able to serve `/articles` path"
 address = "reqbin.com"
 port = 443
 [setup.backends.other_backend_name]
-prompt = "Backend able to serve `/anything` path"
+description = "A backend able to serve `/anything` path"
 address = "httpbin.org"
 port = 443
