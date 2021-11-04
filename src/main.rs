@@ -28,7 +28,7 @@ fn main(req: Request) -> Result<Response, Error> {
 
     // Pattern match on the path...
     match req.get_path() {
-        // If request is to the `/` path, send a default synthetic response.
+        // If request is to the `/` path...
         "/" => {
             // Below are some common patterns for Compute@Edge services using Rust.
             // Head to https://developer.fastly.com/learning/compute/rust/ to discover more.
@@ -55,6 +55,7 @@ fn main(req: Request) -> Result<Response, Error> {
             // let mut endpoint = fastly::log::Endpoint::from_name("my_endpoint");
             // writeln!(endpoint, "Hello from the edge!").unwrap();
 
+            // Send a default synthetic response.
             Ok(Response::from_status(StatusCode::OK)
                 .with_content_type(mime::TEXT_HTML_UTF_8)
                 .with_body(include_str!("welcome-to-compute@edge.html")))
