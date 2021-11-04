@@ -30,33 +30,34 @@ fn main(req: Request) -> Result<Response, Error> {
     match req.get_path() {
         // If request is to the `/` path, send a default synthetic response.
         "/" => {
-            let mut resp = Response::from_status(StatusCode::OK)
-                .with_content_type(mime::TEXT_HTML_UTF_8);
-
-            resp.set_body(include_str!("welcome-to-compute-@-edge.html"));
-
             // Below are some common patterns for Compute@Edge services using Rust.
             // Head to https://developer.fastly.com/learning/compute/rust/ to discover more.
 
             // Create a new request.
             // let mut bereq = Request::get("http://httpbin.org/headers")
-            //     .with_header("X-Custom-Header", "exampleValue1")
+            //     .with_header("X-Custom-Header", "Welcome to Compute@Edge!")
             //     .with_ttl(60);
 
             // Add request headers.
-            // bereq.set_header("X-Another-Custom-Header", "exampleValue2");
+            // bereq.set_header(
+            //     "X-Another-Custom-Header",
+            //     "Recommended reading: https://developer.fastly.com/learning/compute",
+            // );
 
             // Forward the request to a backend.
-            // resp = bereq.send("example_backend")?;
+            // let mut beresp = bereq.send("backend_name")?;
 
             // Remove response headers.
-            // resp.remove_header("X-Another-Custom-Header");
+            // beresp.remove_header("X-Another-Custom-Header");
 
             // Log to a Fastly endpoint.
+            // use std::io::Write;
             // let mut endpoint = fastly::log::Endpoint::from_name("my_endpoint");
             // writeln!(endpoint, "Hello from the edge!").unwrap();
 
-            Ok(resp)
+            Ok(Response::from_status(StatusCode::OK)
+                .with_content_type(mime::TEXT_HTML_UTF_8)
+                .with_body(include_str!("welcome-to-compute@edge.html")))
         }
 
         // Catch all other requests and return a 404.
