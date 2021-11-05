@@ -3,15 +3,3 @@ name = "Default starter for Rust"
 description = "A basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
 authors = ["<oss@fastly.com>"]
 language = "rust"
-
-# The [setup] section is used by the Fastly CLI to provide a more integrated experience for shared Starter Kits.
-# https://developer.fastly.com/reference/fastly-toml/
-#
-[setup.backends.backend_name]
-description = "A backend able to serve `/articles` path"
-address = "reqbin.com"
-port = 443
-[setup.backends.other_backend_name]
-description = "A backend able to serve `/anything` path"
-address = "httpbin.org"
-port = 443
