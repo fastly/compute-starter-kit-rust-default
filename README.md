@@ -1,4 +1,4 @@
-# Compute@Edge default starter kit for Rust
+# Default Starter Kit for Rust
 
 [![Deploy to Fastly](https://deploy.edgecompute.app/button)](https://deploy.edgecompute.app/deploy)
 
