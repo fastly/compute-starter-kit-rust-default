@@ -18,7 +18,7 @@ fn main(req: Request) -> Result<Response, Error> {
         "FASTLY_SERVICE_VERSION: {}",
         std::env::var("FASTLY_SERVICE_VERSION").unwrap_or_else(|_| String::new())
     );
-    
+
     // Filter request methods...
     match req.get_method() {
         // Allow GET and HEAD requests.
