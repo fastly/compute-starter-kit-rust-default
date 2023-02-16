@@ -22,10 +22,10 @@ fn main(req: Request) -> Result<Response, Error> {
     // Filter request methods...
     match req.get_method() {
         // Allow GET and HEAD requests.
-        &Method::GET | &Method::HEAD => (),
+        &Method::GET | &Method::HEAD | => (),
 
-        // Deny anything else.
-        _ => {
+        // Deny anything other than PURGE requests.
+        _ => if req.get_method_str() != "PURGE" {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
                 .with_header(header::ALLOW, "GET, HEAD")
                 .with_body_text_plain("This method is not allowed\n"))
