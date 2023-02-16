@@ -22,7 +22,7 @@ fn main(req: Request) -> Result<Response, Error> {
     // Filter request methods...
     match req.get_method() {
         // Allow GET and HEAD requests.
-        &Method::GET | &Method::HEAD | => (),
+        &Method::GET | &Method::HEAD => (),
 
         // Deny anything other than PURGE requests.
         _ => if req.get_method_str() != "PURGE" {
