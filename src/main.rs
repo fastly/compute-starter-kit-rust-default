@@ -1,6 +1,6 @@
 //! Default Compute@Edge template program.
 
-use fastly::http::{header, Method, StatusCode};
+use fastly::http::{header, StatusCode};
 use fastly::{mime, Error, Request, Response};
 
 /// The entry point for your application.
@@ -20,14 +20,14 @@ fn main(req: Request) -> Result<Response, Error> {
     );
 
     // Filter request methods...
-    match req.get_method() {
-        // Allow GET and HEAD requests.
-        &Method::GET | &Method::HEAD => (),
+    match req.get_method_str() {
+        // Allow GET, HEAD and PURGE requests.
+        "GET" | "HEAD" | "PURGE" => (),
 
-        // Deny anything other than PURGE requests.
-        _ => if req.get_method_str() != "PURGE" {
+        // Deny anything else.
+        _ => {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
-                .with_header(header::ALLOW, "GET, HEAD")
+                .with_header(header::ALLOW, "GET, HEAD, PURGE")
                 .with_body_text_plain("This method is not allowed\n"))
         }
     };
