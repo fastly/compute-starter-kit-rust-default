@@ -21,15 +21,15 @@ fn main(req: Request) -> Result<Response, Error> {
 
     // Filter request methods...
     match req.get_method() {
-        // Allow GET and HEAD requests.
-        &Method::GET | &Method::HEAD => (),
-
-        // Deny anything else.
-        _ => {
+        // Block requests with unexpected methods
+        &Method::POST | &Method::PUT | &Method::PATCH | &Method::DELETE => {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
-                .with_header(header::ALLOW, "GET, HEAD")
+                .with_header(header::ALLOW, "GET, HEAD, PURGE")
                 .with_body_text_plain("This method is not allowed\n"))
-        }
+        } 
+
+        // Let any other requests through
+        _ => (),
     };
 
     // Pattern match on the path...
