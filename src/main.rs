@@ -26,7 +26,7 @@ fn main(req: Request) -> Result<Response, Error> {
             return Ok(Response::from_status(StatusCode::METHOD_NOT_ALLOWED)
                 .with_header(header::ALLOW, "GET, HEAD, PURGE")
                 .with_body_text_plain("This method is not allowed\n"))
-        } 
+        }
 
         // Let any other requests through
         _ => (),
