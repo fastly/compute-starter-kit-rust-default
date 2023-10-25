@@ -55,9 +55,9 @@ dependencies = [
 
 [[package]]
 name = "fastly"
-version = "0.9.4"
+version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99ae567cb5ba0b3ba601bd77471156595d3996c8345cdb26e6196818d889d6c2"
+checksum = "b58976e58d1fdfb94e3d6b0be4c1ad5a2218c6080c0db66621f397eb9cfd77dc"
 dependencies = [
  "anyhow",
  "bytes",
@@ -86,9 +86,9 @@ dependencies = [
 
 [[package]]
 name = "fastly-macros"
-version = "0.9.4"
+version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "32cf8d740210ace2fc3ec8910aee3def804b093e81fb991293ce83a159940099"
+checksum = "368e73b8d3d46f0dc82f53aef6121a7e1b993cf5a274b62de5ca51d97deb0349"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -97,9 +97,9 @@ dependencies = [
 
 [[package]]
 name = "fastly-shared"
-version = "0.9.4"
+version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "54a9c7b53bc63f8c1a1d195c7841bff2733d42982a4cdbed5a5d14bd6a17ef3d"
+checksum = "770484ead4372ba9c8d29ab77a27769847733cfb6b8f3f5f9a04f6aab24362b9"
 dependencies = [
  "bitflags",
  "http",
@@ -108,9 +108,9 @@ dependencies = [
 
 [[package]]
 name = "fastly-sys"
-version = "0.9.4"
+version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "564dc930a14b7b358a1c28fa8a32d9ac7eef55afb43d0c6ea138b9892b825804"
+checksum = "35f1209e8a024f87cd6db4808ce74ae0c257b63aed5ac9d50888f95ecb116510"
 dependencies = [
  "bitflags",
  "fastly-shared",
@@ -322,9 +322,9 @@ dependencies = [
 
 [[package]]
 name = "time"
-version = "0.3.22"
+version = "0.3.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ea9e1b3cf1243ae005d9e74085d4d542f3125458f3a81af210d901dcd7411efd"
+checksum = "59e399c068f43a5d116fedaf73b203fa4f9c519f17e2b34f63221d3792f81446"
 dependencies = [
  "serde",
  "time-core",
@@ -339,9 +339,9 @@ checksum = "7300fbefb4dadc1af235a9cef3737cea692a9d97e1b9cbcd4ebdae6f8868e6fb"
 
 [[package]]
 name = "time-macros"
-version = "0.2.9"
+version = "0.2.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "372950940a5f07bf38dbe211d7283c9e6d7327df53794992d293e534c733d09b"
+checksum = "96ba15a897f3c86766b757e5ac7221554c6750054d74d5b28844fce5fb36a6c4"
 dependencies = [
  "time-core",
 ]

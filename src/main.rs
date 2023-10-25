@@ -1,4 +1,4 @@
-//! Default Compute@Edge template program.
+//! Default Compute template program.
 
 use fastly::http::{header, Method, StatusCode};
 use fastly::{mime, Error, Request, Response};
@@ -36,12 +36,12 @@ fn main(req: Request) -> Result<Response, Error> {
     match req.get_path() {
         // If request is to the `/` path...
         "/" => {
-            // Below are some common patterns for Compute@Edge services using Rust.
+            // Below are some common patterns for Compute services using Rust.
             // Head to https://developer.fastly.com/learning/compute/rust/ to discover more.
 
             // Create a new request.
             // let mut bereq = Request::get("http://httpbin.org/headers")
-            //     .with_header("X-Custom-Header", "Welcome to Compute@Edge!")
+            //     .with_header("X-Custom-Header", "Welcome to Compute!")
             //     .with_ttl(60);
 
             // Add request headers.
@@ -64,7 +64,7 @@ fn main(req: Request) -> Result<Response, Error> {
             // Send a default synthetic response.
             Ok(Response::from_status(StatusCode::OK)
                 .with_content_type(mime::TEXT_HTML_UTF_8)
-                .with_body(include_str!("welcome-to-compute@edge.html")))
+                .with_body(include_str!("welcome-to-compute.html")))
         }
 
         // Catch all other requests and return a 404.
