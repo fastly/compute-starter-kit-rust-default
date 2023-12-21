@@ -1,8 +1,5 @@
-# This file describes a Fastly Compute package. To learn more visit:
-# https://developer.fastly.com/reference/fastly-toml/
-
-authors = ["<oss@fastly.com>"]
-description = "A basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
+authors = ["<Ricky@Hosfe.lt>"]
+description = "Using Fastly's compute at edge to serve my static site (built using fastly/compute-starter-kit-rust-default)"
 language = "rust"
 manifest_version = 3
-name = "Default starter for Rust"
+name = "Hosfelt.dev on C@E"

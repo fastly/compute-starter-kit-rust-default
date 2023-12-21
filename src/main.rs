@@ -35,7 +35,7 @@ fn main(req: Request) -> Result<Response, Error> {
     // Pattern match on the path...
     match req.get_path() {
         // If request is to the `/` path...
-        "/" => {
+        "/404" => {
             // Below are some common patterns for Compute services using Rust.
             // Head to https://developer.fastly.com/learning/compute/rust/ to discover more.
 
@@ -64,7 +64,7 @@ fn main(req: Request) -> Result<Response, Error> {
             // Send a default synthetic response.
             Ok(Response::from_status(StatusCode::OK)
                 .with_content_type(mime::TEXT_HTML_UTF_8)
-                .with_body(include_str!("welcome-to-compute.html")))
+                .with_body(include_str!("404.html")))
         }
 
         // Catch all other requests and return a 404.
