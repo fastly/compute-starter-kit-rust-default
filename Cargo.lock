@@ -78,13 +78,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "fastly-compute-project"
-version = "0.1.0"
-dependencies = [
- "fastly",
-]
-
-[[package]]
 name = "fastly-macros"
 version = "0.9.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -139,6 +132,13 @@ checksum = "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a"
 dependencies = [
  "typenum",
  "version_check",
+]
+
+[[package]]
+name = "hosfe_lt"
+version = "0.1.0"
+dependencies = [
+ "fastly",
 ]
 
 [[package]]
