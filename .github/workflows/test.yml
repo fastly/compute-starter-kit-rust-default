@@ -67,8 +67,5 @@ jobs:
       uses: fastly/compute-actions/deploy@v5
       if: |
         startsWith(github.ref, 'refs/tags/v') && needs.test.result == 'success'
-      with:
-        service_id: ${{ secrets.FASTLY_SERVICE_ID }}
-        comment: 'Deployed via GitHub Actions' # optional
       env:
         FASTLY_API_TOKEN: ${{ secrets.FASTLY_API_TOKEN }}

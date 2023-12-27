@@ -3,3 +3,4 @@ description = "Using Fastly's compute at edge to serve my static site (built usi
 language = "rust"
 manifest_version = 3
 name = "Hosfelt.dev on C@E"
+service_id = "D4wTB3DpTsW6Zy60r9tPO0"
