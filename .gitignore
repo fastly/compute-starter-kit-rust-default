@@ -2,3 +2,4 @@
 **/*.rs.bk
 /bin
 /pkg
+.DS_Store

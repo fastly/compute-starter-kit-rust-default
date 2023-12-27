@@ -1,4 +1,4 @@
-authors = ["<Ricky@Hosfe.lt>"]
+authors = ["Ricky <Ricky@Hosfe.lt>"]
 description = "Using Fastly's compute at edge to serve my static site (built using fastly/compute-starter-kit-rust-default)"
 language = "rust"
 manifest_version = 3

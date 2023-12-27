@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ricky Hosfelt</title>
+    <link>https://hosfe.lt/</link>
+    <description>Recent content on Ricky Hosfelt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2023</copyright>
+    <lastBuildDate>Wed, 19 Apr 2023 21:19:00 +0000</lastBuildDate>
+    <atom:link href="https://hosfe.lt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://hosfe.lt/about/</link>
+      <pubDate>Wed, 27 Dec 2023 14:41:52 -0500</pubDate>
+      <guid>https://hosfe.lt/about/</guid>
+      <description>Hello! I am Ricky Hosfelt a career software engineer and now an Engineering Manager with a passion for Rust, Networking, and helping others. I hope to write more on all of the above plus some other random interests of mine (watches, hockey, cars, video games, etc) in the future. Thanks for stopping by :D</description>
+    </item>
+    <item>
+      <title>My Path To Management</title>
+      <link>https://hosfe.lt/posts/story/</link>
+      <pubDate>Wed, 19 Apr 2023 21:19:00 +0000</pubDate>
+      <guid>https://hosfe.lt/posts/story/</guid>
+      <description>From an early point in my career I have always wanted to lead. Not out of ego, but I have always loved helping others.&#xA;In high school I was part of a small company (woo Spearfish Industries, thanks Steve and Dave ;)) that helped local businesses with the internet, websites, graphic design, and videography. This was my entry into computer science and I absolutely loved it I went from the lead graphic designer to the network admin and started to really enjoy setting up routers and explaining the settings to grandmas and business owners alike.</description>
+    </item>
+    <item>
+      <title>Ricky Hosfelt</title>
+      <link>https://hosfe.lt/resume/</link>
+      <pubDate>Wed, 01 Mar 2023 17:20:05 +0000</pubDate>
+      <guid>https://hosfe.lt/resume/</guid>
+      <description>Engineering Manager &amp;amp;&amp;amp; Software Developer Links Github Linkedin Mastodon Contact Ricky@Hosfe.lt Phone number available on request Interests Rust, Networking, Open Source Software, Command Line Interfaces, Tooling, DevOps, Python, Linux/Unix, Security/Privacy, Technology for Social Good&#xA;Work Experience Engineering Manager (20231113 - Present) - Fastly Managing the Media Applications Team Engineering Manger (20220801 - 20231013) - 1Password Job change due to Technology Department reorganization Current Manager of the Frameworks team in Product, Frameworks, and Tooling organization Manages team of 10 Experience building an organization from scratch with peer EMs under the direction of the CTO Focuses on scalability, performance, and correctness of APIs within 1Password code bases (Rust, Swift, Kotlin, TypeScript) Engineering Manager (20210901 - 20220801) – 1Password Managing the Apple Client Apps team [8 developers] Coaching iOS developers through 1-on-1s, general developer advice, and team building activities Spearheading a hiring initiative to standardize the hiring process; including educating new interviewers, helping avoid bias, and increasing diversity at the company Assisting the Swift developers understand Rust and contributing to the Rust codebase by fixing small issues and reviewing code Senior Developer (20200617 - 20210901) – 1Password Senior Rust Developer for the common backend Worked on platform team in charge of lower layer functions within the codebase Co-engineered localization build script driving all translations throughout all client apps Lead developer for Medical Records implementation &amp;ndash; enabled all clients to view and add medical records item types (new and legacy) as well as the backend server logic Pushed forward CI development practices by helping the lead CI engineer with Rust tooling and updates Software Developer (20190215 - 20200529) – Carnegie Mellon Software Engineering Institute (SEI) Lead Software Developer for xView2 Challenge Developed and maintained xView2 baseline code Interviewed and selected data labelling contractor Maintained discord challenge of hundred of solvers and answered questions on the baseline code, docker, and the challenge Computer Engineer (20150619 - 20190207) – Department of Defense Selected for Field Assignment to United Kingdom Reverse engineered computer network protocols for traffic identification Engineered network protocol library to parse and manipulate packets (Rust) Mentored interns for six week tours Lead Analyst (20141018 - 20150618) – Department of Defense Prototyped and deployed parallel network protocol classification algorithm over Hadoop cluster Instructed beginner, intermediate, and expert protocol analysis courses Taught analysis techniques to interns and supervised their projects and progress Analyst (20130311 - 20141017) – Department of Defense Analyzed protocols to fully understand technology Automated packet identification with python programs Technical Recruiter (20110118 - 20130310) – Department of Defense Hired, maintained, and coordinated the Cooperative Education Program for 120 STEM positions Developed and sustained website to streamline students transition to full time employees Programming Languages Rust Python Bash Open Source Member of Command-Line Working Group (Rust) Founder of Machine Learning Working Group (Rust) Maintained cargo-outdated (Rust) Cargo plugin that checks if any project dependencies are out-of-date Creating new features, reviewing PRs, and addressing issues 23K Downloads from Crates.</description>
+    </item>
+  </channel>
+</rss>

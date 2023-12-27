@@ -1,0 +1,75 @@
+baseURL = 'https://hosfe.lt'
+languageCode = 'en-us'
+title = 'Ricky Hosfelt'
+defaultContentLanguageInSubdir = false
+theme = "hermit-v2"
+
+pygmentsCodefences  = true
+pygmentsUseClasses  = true
+
+
+copyright = "2023"
+enableEmoji = true
+
+# turn off tags
+disableKinds = ["taxonomy", "term"]
+
+[params.author]
+  name = "Ricky Hosfelt"
+  about = "about"
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
+
+  description = "My personal website for random technology and fun."
+  # images = [""]
+  themeColor = "#494f5c"
+
+  homeSubtitle = "Engineering Manager and Rustacean 🦀"
+  footerCopyright = "MIT – All Rights Reserved"
+  justifyContent = false
+  relatedPosts = true
+  code_copy_button = true
+  homeSubtitlePrinter = true
+  scrollToTop = true 
+  global_mathjax = false
+  readTime = true
+  readTimeSeparator = "–"
+  shareSocial = true
+  
+  [[params.socialLinks]]
+    name = "mastodon"
+    url = "https://fosstodon.org/@degausser"
+
+  [[params.socialLinks]]
+    name = "github"
+    url = "https://github.com/deg4uss3r"
+
+  [[params.socialLinks]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/ricky-hosfelt"
+
+  [[params.socialLinks]]
+    name = "discord"
+    url = "https://discord.com/users/560116126592401431"
+
+[menu]
+
+  [[menu.main]]
+    name = "Posts"
+    url = "posts/"
+    weight = 10
+
+  [[menu.main]]
+    name = "About"
+    url = "about/"
+    weight = 20
+
+  [[menu.main]]
+    name = "Resume"
+    url = "resume/"
+    weight = 30
+
