@@ -65,6 +65,8 @@ jobs:
           target: wasm32-wasi # WebAssembly target
     - name: Deploy
       uses: fastly/compute-actions/deploy@v5
+      with:
+        verbose: true
       if: |
         startsWith(github.ref, 'refs/tags/v') && needs.test.result == 'success'
       env:
