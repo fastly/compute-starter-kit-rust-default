@@ -73,7 +73,6 @@ fn main(req: Request) -> Result<Response, Error> {
                 .with_content_type(mime::TEXT_HTML_UTF_8)
                 .with_body(include_str!("static_site/hosfe.lt/public/posts/story/index.html")))
         },
-        
         // Catch all other requests and return a 404.
         _ =>  {
             Ok(Response::from_status(StatusCode::OK)
