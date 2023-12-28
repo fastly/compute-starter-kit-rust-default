@@ -64,7 +64,7 @@ jobs:
           toolchain: 1.54.0 # current Rust toolchain for Compute
           target: wasm32-wasi # WebAssembly target
     - name: Deploy
-      uses: fastly/compute-actions/deploy@v5
+      uses: fastly/compute-actions@v5
       with:
         verbose: true
       if: |
