@@ -52,6 +52,11 @@ fn main(req: Request) -> Result<Response, Error> {
                 .with_content_type(mime::TEXT_HTML_UTF_8)
                 .with_body(include_str!("static_site/hosfe.lt/public/about/index.html"))) 
         },
+        "/resume/" => {
+            Ok(Response::from_status(StatusCode::OK)
+                .with_content_type(mime::TEXT_HTML_UTF_8)
+                .with_body(include_str!("static_site/hosfe.lt/public/resume/index.html"))) 
+        },
         "/css/style.min.dbbe08cb3b07bbce02de1a13a57d4221bb75487e75b0d1a5196a5353f7135921.css" => {
             Ok(Response::from_status(StatusCode::OK)
                 .with_content_type(mime::TEXT_CSS_UTF_8)
