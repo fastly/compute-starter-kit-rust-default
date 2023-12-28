@@ -53,6 +53,8 @@ jobs:
       run: cargo build
       shell: bash
   deploy:
+    if: |
+      startsWith(github.ref, 'refs/tags/v') && needs.test.result == 'success'
     runs-on: ubuntu-latest
     environment: deploy
     needs: [test]
@@ -67,7 +69,5 @@ jobs:
       uses: fastly/compute-actions@v5
       with:
         verbose: true
-      if: |
-        startsWith(github.ref, 'refs/tags/v') && needs.test.result == 'success'
       env:
         FASTLY_API_TOKEN: ${{ secrets.FASTLY_API_TOKEN }}
