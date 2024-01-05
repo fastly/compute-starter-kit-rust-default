@@ -2,5 +2,5 @@ authors = ["Ricky <Ricky@Hosfe.lt>"]
 description = "Using Fastly's compute at edge to serve my static site (built using fastly/compute-starter-kit-rust-default)"
 language = "rust"
 manifest_version = 3
-name = "Hosfelt.dev on C@E"
+name = "Hosfe.lt on C@E"
 service_id = "D4wTB3DpTsW6Zy60r9tPO0"
