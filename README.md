@@ -4,7 +4,7 @@
 
 Get to know the Fastly Compute environment with a basic starter that demonstrates routing, simple synthetic responses and code comments that cover common patterns.
 
-**For more details about this and other starter kits for Compute, see the [Fastly Developer Hub](https://developer.fastly.com/solutions/starters/)**.
+**For more details about this and other starter kits for Compute, see the [Fastly Developer Hub](https://www.fastly.com/documentation/solutions/starters/)**.
 
 ## Features
 
@@ -14,7 +14,7 @@ Get to know the Fastly Compute environment with a basic starter that demonstrate
 
 ## Understanding the code
 
-This starter is intentionally lightweight, and requires no dependencies aside from the [`fastly`](https://docs.rs/fastly) crate. It will help you understand the basics of processing requests at the edge using Fastly. This starter includes implementations of common patterns explained in our [using Compute](https://developer.fastly.com/learning/compute/rust/) and [VCL migration](https://developer.fastly.com/learning/compute/migrate/) guides.
+This starter is intentionally lightweight, and requires no dependencies aside from the [`fastly`](https://docs.rs/fastly) crate. It will help you understand the basics of processing requests at the edge using Fastly. This starter includes implementations of common patterns explained in our [using Compute](https://www.fastly.com/documentation/guides/compute/rust/) and [VCL migration](https://www.fastly.com/documentation/guides/compute/migrate/) guides.
 
 The starter doesn't require the use of any backends. Once deployed, you will have a Fastly service running on Compute that can generate synthetic responses at the edge.
 
