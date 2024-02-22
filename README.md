@@ -4,7 +4,7 @@
 
 Get to know the Fastly Compute environment with a basic starter that demonstrates routing, simple synthetic responses and code comments that cover common patterns.
 
-**For more details about this and other starter kits for Compute, see the [Fastly Developer Hub](https://www.fastly.com/documentation/solutions/starters/)**.
+**For more details about this and other starter kits for Compute, see the [Fastly Documentation Hub](https://www.fastly.com/documentation/solutions/starters/)**.
 
 ## Features
 
