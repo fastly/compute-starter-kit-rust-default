@@ -6,3 +6,6 @@ description = "A basic starter kit that demonstrates routing, simple synthetic r
 language = "rust"
 manifest_version = 3
 name = "Default starter for Rust"
+
+[scripts]
+  build = "cargo build --bin fastly-compute-project --release --target wasm32-wasi --color always"
