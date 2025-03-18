@@ -3,6 +3,4 @@ updates:
   - package-ecosystem: cargo
     directory: "/"
     schedule:
-      interval: daily
-    reviewers:
-      - fastly/developer-relations
+      interval: weekly
