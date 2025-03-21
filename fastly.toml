@@ -1,11 +1,11 @@
 # This file describes a Fastly Compute package. To learn more visit:
-# https://developer.fastly.com/reference/fastly-toml/
+# https://www.fastly.com/documentation/reference/compute/fastly-toml/
 
-authors = ["<oss@fastly.com>"]
-description = "A basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
+authors = ["<devrel@fastly.com>"]
+description = "Starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
 language = "rust"
 manifest_version = 3
 name = "Default starter for Rust"
 
 [scripts]
-  build = "cargo build --bin fastly-compute-project --release --target wasm32-wasi --color always"
+  build = "cargo build --profile release"
