@@ -1,53 +1,14 @@
-on: pull_request
 name: Test
+
+on:
+  pull_request:
+    paths:
+      - 'Cargo.toml'
+      - 'rust-toolchain.toml'
+      - '.cargo/config.toml'
+      - '.github/workflows/test.yml'
+      - 'src/**'
+
 jobs:
   test:
-    strategy:
-      matrix:
-        rust-toolchain: [1.83.0]
-        platform: [ubuntu-latest]
-    runs-on: ${{ matrix.platform }}
-    environment: test
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@1.83.0
-    - name: Add wasm32-wasi Rust target
-      run: rustup target add wasm32-wasi --toolchain ${{ matrix.rust-toolchain }}
-    - name: Cache cargo registry
-      uses: actions/cache@v3
-      with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo index
-      uses: actions/cache@v3
-      with:
-        path: ~/.cargo/git
-        key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-    - name: Cache cargo build
-      uses: actions/cache@v3
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-    - name: Install fmt
-      run: rustup component add rustfmt
-      shell: bash
-    - name: Install clippy
-      run: rustup component add clippy
-      shell: bash
-    - name: Install audit
-      run: cargo install cargo-audit
-      shell: bash
-    - name: Check binaries and format
-      run: RUSTFLAGS="--deny warnings" cargo check --bins --target wasm32-wasi && cargo fmt -- --check
-      shell: bash
-    - name: clippy
-      run: cargo clippy
-      shell: bash
-    - name: audit
-      run: cargo audit
-      shell: bash
-    - name: build
-      run: cargo build
-      shell: bash
+    uses: fastly/devex-reusable-workflows/.github/workflows/compute-starter-kit-rust-v1.yml@main

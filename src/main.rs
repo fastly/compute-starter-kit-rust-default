@@ -10,7 +10,6 @@ use fastly::{mime, Error, Request, Response};
 /// make completely new requests, and/or generate synthetic responses.
 ///
 /// If `main` returns an error, a 500 error response will be delivered to the client.
-
 #[fastly::main]
 fn main(req: Request) -> Result<Response, Error> {
     // Log service version
