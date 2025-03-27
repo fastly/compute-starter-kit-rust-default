@@ -11,4 +11,6 @@ on:
 
 jobs:
   test:
-    uses: fastly/devex-reusable-workflows/.github/workflows/compute-starter-kit-rust-v1.yml@main
+    uses: fastly/devex-reusable-workflows/.github/workflows/compute-starter-kit-rust-v2.yml@main
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN}}
