@@ -13,4 +13,4 @@ codegen-units = 1
 lto = "fat"
 
 [dependencies]
-fastly = "0.11.0"
+fastly = "0.12.0"
